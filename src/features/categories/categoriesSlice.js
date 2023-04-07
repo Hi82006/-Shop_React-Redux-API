@@ -1,12 +1,13 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constans";
 
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit")
+// const { createAsyncThunk, createSlice  } = require("@reduxjs/toolkit")
 
 
-const initialState = {
-    list: [],
-}
+// const initialState = {
+//     list: [],
+// }
 export const getCategories = createAsyncThunk(
     'categories/getCategories',
     async (_, thunkAPI) => {
