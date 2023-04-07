@@ -15,7 +15,7 @@ const SingleProduct = () => {
   const dispatch = useDispatch();
     const { id } = useParams();
     const navigate = useNavigate()
-    const { related } = useSelector(({ products }) => products)
+    const { list, related } = useSelector(({ products }) => products)
 
     const { data, isLoading, isFetching, isSuccess } = useGetProductQuery({ id });
     
@@ -26,10 +26,10 @@ const SingleProduct = () => {
     },[isLoading, isFetching, isSuccess, navigate])
 
     useEffect(() => {
-      if(data){
-        dispatch(getRaletedProducts(data.category.id))
-      }
-    },[data,dispatch]);
+      if(!data || !list.length) return;
+  
+      dispatch(getRaletedProducts(data.category.id))
+    },[data, dispatch, list.length]);
 
   return !data ? (
     <section className='preloader'>Loading...</section>
