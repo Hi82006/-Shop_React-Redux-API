@@ -7,7 +7,13 @@ const UserSignupForm = () => {
         name: "",
         email: "",
         password: "",
-    })
+        avatar: "",
+    });
+
+    const handleChange = ({ target: { value, name } }) => {
+        setValues({ ...values, [name]: value });
+    };
+
   return (
   <div className={styles.wrapper}>
     <div className={styles.close}>
@@ -23,36 +29,36 @@ const UserSignupForm = () => {
             <input 
             type='email' 
             name='email'
-            value=""
+            value={values.email}
             autoComplete='off'
-            onChange={() => {}}
+            onChange={handleChange}
             placeholder='Your email'
             required
             />
             <input 
             type='name' 
             name='name'
-            value=""
+            value={values.name}
             autoComplete='off'
-            onChange={() => {}}
+            onChange={handleChange}
             placeholder='Your name'
             required
             />
             <input 
             type='password' 
             name='password'
-            value=""
+            value={values.password}
             autoComplete='off'
-            onChange={() => {}}
+            onChange={handleChange}
             placeholder='Your password'
             required
             />
             <input 
             type='avatar' 
             name='avatar'
-            value=""
+            value={values.avatar}
             autoComplete='off'
-            onChange={() => {}}
+            onChange={handleChange}
             placeholder='Your avatar'
             required
             />
