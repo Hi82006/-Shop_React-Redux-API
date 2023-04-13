@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_URL } from "../../utils/constans";
+import { BASE_URL } from "../../utils/constants";
 
 // const { createAsyncThunk, createSlice  } = require("@reduxjs/toolkit")
 

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../../utils/constans";
+import { BASE_URL } from "../../utils/constants";
 import { shuffle } from "../../utils/common";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit")
@@ -17,7 +17,7 @@ export const getProducts = createAsyncThunk(
             return thunkAPI.rejectWithValue(err)
         }
     }
-    )
+);
 
 const productsSlice = createSlice({
     name: 'products',
