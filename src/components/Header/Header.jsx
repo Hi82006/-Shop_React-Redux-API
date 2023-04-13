@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import classes from '../../styles/Header.module.css'
 import { ROUTES } from '../../utils/routes'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,10 +10,20 @@ import { toggleForm } from '../../features/user/userSlice'
 
 const Header = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { currentUser } = useSelector(({ user }) => user);
+
+  const [values, setValues] = useState({ name: " Guest", avatar: AVATAR });
+
+  useEffect(() => {
+    if(!currentUser)return;
+
+    setValues(currentUser);
+  },[currentUser])
 
   const handleClick = () => {
     if(!currentUser) dispatch(toggleForm(true));
+    else navigate(ROUTES.PROFILE)
   }
   return (
     <div className={classes.header}>
@@ -25,9 +35,9 @@ const Header = () => {
       <div className={classes.info} onClick={handleClick}>
         <div className={classes.user}>
             <div className={classes.avatar} 
-            style={{ backgroundImage: `url(${AVATAR})` }}
+            style={{ backgroundImage: `url(${values.avatar})` }}
             />
-            <div className={classes.username}>Guest</div>
+            <div className={classes.username}>{values.name}</div>
         </div>
         <form className={classes.form}>
             <div className={classes.icon}>

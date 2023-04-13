@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 
 import styles from "../../styles/User.module.css"
-import { createUser } from '../../features/user/userSlice';
+import { loginUser } from '../../features/user/userSlice';
 
 
 const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
     const dispatch = useDispatch();
     const [values, setValues] = useState({
-        name: "",
         email: "",
         password: "",
-        avatar: "",
     });
 
     const handleChange = ({ target: { value, name } }) => {
@@ -20,11 +18,11 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const isNotEmpty = Object.values(values).some(val => !val);
+        const isNotEmpty = Object.values(values).some((val) => !val);
 
         if(isNotEmpty) return;
 
-        dispatch(createUser(values));
+        dispatch(loginUser(values));
         closeForm();
     };
   return (
@@ -35,7 +33,7 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
         </svg>
     </div>
     <div className={styles.title}>
-        Sign Up
+        Log In
     </div>
     <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.group}>
@@ -51,17 +49,6 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
         </div>
         <div className={styles.group}>
             <input 
-            type='name' 
-            name='name'
-            value={values.name}
-            autoComplete='off'
-            onChange={handleChange}
-            placeholder='Your name'
-            required
-            />
-        </div>
-        <div className={styles.group}>
-            <input 
             type='password' 
             name='password'
             value={values.password}
@@ -71,24 +58,12 @@ const UserSignupForm = ({ toggleCurrentFormType, closeForm }) => {
             required
             />
         </div>
-        <div className={styles.group}>
-            <input 
-            type='avatar' 
-            name='avatar'
-            value={values.avatar}
-            autoComplete='off'
-            onChange={handleChange}
-            placeholder='Your avatar'
-            required
-            />
-        </div>
-        <div className={styles.link} 
-        onClick={() => toggleCurrentFormType("login")}
-        >
-            I alredy have an account
+        <div className={styles.link}
+        onClick={() => toggleCurrentFormType("signup")}>
+            Create an account
         </div>
         <button type='submit' className={styles.submit}>
-            Create an account
+            Login
         </button>
     </form>
   </div>
