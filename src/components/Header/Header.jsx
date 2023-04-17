@@ -42,8 +42,8 @@ const handleSearch = ({ target: { value } }) => {
             <img src={Logo} alt="Stuff" />
         </Link>
       </div>
-      <div className={classes.info} onClick={handleClick}>
-        <div className={classes.user}>
+      <div className={classes.info} >
+        <div className={classes.user} onClick={handleClick}>
             <div className={classes.avatar} 
             style={{ backgroundImage: `url(${values.avatar})` }}
             />
