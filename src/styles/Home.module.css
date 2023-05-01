@@ -127,3 +127,12 @@
   color: var(--violet);
   font-weight: 700;
 }
+
+.text {
+  display: flex;
+  row-gap: 15px;
+  flex-direction: column;
+}
+.text button {
+  width: fit-content;
+}

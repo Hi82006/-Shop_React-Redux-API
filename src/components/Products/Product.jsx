@@ -31,7 +31,7 @@ const Product = (item) => {
     <section className={styles.product}>
         <div className={styles.images}>
             <div className={styles.current}
-                style={{ background: `url(${currentImage})` }}
+                style={{ backgroundImage: `url(${currentImage})` }}
             />
             <div className={styles["images-list"]}>
             {images.map((image, i) => (
